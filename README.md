@@ -30,4 +30,4 @@ https://github.com/HCLonely/hexo-steam-games
 2. 后台新建页面选择 `Steam游戏库代理版` 这个模版即可
 
 ### 演示
-[Steam游戏库](https://m1314.cn/steam/ "Steam游戏库")
+[Steam游戏库](https://m1314.cn/game/ "Steam游戏库")
