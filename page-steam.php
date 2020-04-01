@@ -15,7 +15,7 @@ get_header(); ?>
 	echo "<a href=\"https://steamcommunity.com/profiles/".$steamid."\" target=\"_blank\"><img src=\"https://steamsignature.com/profile/schinese/".$steamid.".png\"></a>";
 	//上面这个图片是实时更新的
 	$data = json_decode(file_get_contents("json/steam.json"),true);//获取本地JSON并转数组（社区被墙折中办法）
-	//$data = json_decode(file_get_contents("json/steam.json"),true);//使用我的API获取JSON并转数组（我的API稳定性不保证）
+	//$data = json_decode(file_get_contents("API地址"),true);//使用API获取JSON并转数组（我的API稳定性不保证）
 	//echo '<pre>';
 	//echo $data;//我瞅瞅里面有啥玩意儿
 	$count = count($data); //游戏数量统计
@@ -28,9 +28,7 @@ get_header(); ?>
 			} else {
 				$hours = $data[$i]['hours_forever'];
 			}
-			if($i < 8){//首次展示数目
-				$num = "";
-			} else {
+			if($i > 8){//首次要展示游戏数目默认为8个
 				$num = "more";
 			}
 			echo "<div class=\"steam-game-item ".$num."\"><div class=\"steam-game-picture\"><img src=\"".$data[$i]['logo']."\" referrerpolicy=\"no-referrer\"></div><div class=\"steam-game-info\"><div class=\"steam-game-title\"><a target=\"_blank\" href=\"https://store.steampowered.com/app/".$data[$i]['appid']."\">".$data[$i]['name']."</a></div><div class=\"steam-game-meta\"><span class=\"steam-game-info-time\">总时数 ".$hours." 小时</span></div></div><div class=\"steam-game-link\"><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/app/".$data[$i]['appid']."\">商店页面</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/app/".$data[$i]['appid']."/discussions\">论坛</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/search/groups/?text=".$data[$i]['name']."\">查找社区组</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/news/?appids=".$data[$i]['appid']."\">相关新闻</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamdb.info/app/".$data[$i]['appid']."\">SteamDB</a></div></div>";
@@ -39,7 +37,7 @@ get_header(); ?>
 ?>
 <center><div class="showall">. Show All .</div></center><br>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-<script type="text/javascript">//硬核分页展示=.=
+<script type="text/javascript">//硬核分页展示=.=嘿嘿又不是不能用
 $(document).ready(function(){
 	$(".more").hide();
 	$(".showall").click(function(){

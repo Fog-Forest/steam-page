@@ -50,9 +50,25 @@ get_header(); ?>
 			} else {
 				$hours = $data[$i]['hours_forever'];
 			}
-			echo "<div class=\"steam-game-item\"><div class=\"steam-game-picture\"><img src=\"".$data[$i]['logo']."\" referrerpolicy=\"no-referrer\"></div><div class=\"steam-game-info\"><div class=\"steam-game-title\"><a target=\"_blank\" href=\"https://store.steampowered.com/app/".$data[$i]['appid']."\">".$data[$i]['name']."</a></div><div class=\"steam-game-meta\"><span class=\"steam-game-info-time\">总时数 ".$hours." 小时</span></div></div><div class=\"steam-game-link\"><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/app/".$data[$i]['appid']."\">商店页面</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/app/".$data[$i]['appid']."/discussions\">论坛</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/search/groups/?text=".$data[$i]['name']."\">查找社区组</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/news/?appids=".$data[$i]['appid']."\">相关新闻</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamdb.info/app/".$data[$i]['appid']."\">SteamDB</a></div></div>";
+			if($i > 8){//首次要展示游戏数目默认为8个
+				$num = "more";
+			}
+			if($data[$i]['appid'] == 205790){
+				continue;//Dota2 Test图片有问题，跳过该游戏
+			}
+			echo "<div class=\"steam-game-item ".$num."\"><div class=\"steam-game-picture\"><img src=\"".$data[$i]['logo']."\" referrerpolicy=\"no-referrer\"></div><div class=\"steam-game-info\"><div class=\"steam-game-title\"><a target=\"_blank\" href=\"https://store.steampowered.com/app/".$data[$i]['appid']."\">".$data[$i]['name']."</a></div><div class=\"steam-game-meta\"><span class=\"steam-game-info-time\">总时数 ".$hours." 小时</span></div></div><div class=\"steam-game-link\"><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/app/".$data[$i]['appid']."\">商店页面</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/app/".$data[$i]['appid']."/discussions\">论坛</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/search/groups/?text=".$data[$i]['name']."\">查找社区组</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/news/?appids=".$data[$i]['appid']."\">相关新闻</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamdb.info/app/".$data[$i]['appid']."\">SteamDB</a></div></div>";
 		}
 	}
 ?>
+<center><div class="showall">. Show All .</div></center><br>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+<script type="text/javascript">//收缩展示=.=
+$(document).ready(function(){
+	$(".more").hide();
+	$(".showall").click(function(){
+		$(".more").show(1000);
+		$(".showall").hide();
+	});
+});</script>
 
 <?php get_footer();
