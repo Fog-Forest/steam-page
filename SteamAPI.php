@@ -1,6 +1,6 @@
 <?php
 	$steamid = $_GET['id'];//SteamID，可以在这里获取https://steamsignature.com/
-	$showtype = $_GET['type'];//默认为所有游戏,最近游玩过为"recent"
+	$showtype = $_GET['type'];//默认为最近游玩,所有游戏参数为"all"
 	
 	if($steamid == null){
 		echo "Error!";
@@ -10,7 +10,7 @@
 	}
 	
 	//获取Steam信息函数
-	function steaminfo($steamid,$showtype="all"){
+	function steaminfo($steamid,$showtype){
 		$url = "https://steamcommunity.com/profiles/$steamid/games/?tab=$showtype";
 		$ch = curl_init(); //初始化curl模块
 		curl_setopt($ch, CURLOPT_URL, $url); //登录提交的地址

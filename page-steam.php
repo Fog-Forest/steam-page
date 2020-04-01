@@ -37,7 +37,7 @@ get_header(); ?>
 ?>
 <center><div class="showall">. Show All .</div></center><br>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-<script type="text/javascript">//硬核分页展示=.=嘿嘿又不是不能用
+<script type="text/javascript">//收缩展示=.=
 $(document).ready(function(){
 	$(".more").hide();
 	$(".showall").click(function(){
