@@ -13,7 +13,7 @@ get_header(); ?>
 
 <?php
 	$steamid = "76561198849944519";//你的SteamID，可以在这里获取https://steamsignature.com/
-	$showtype = "all";//默认为全部游戏,最近游玩过请改为“recent”
+	$showtype = "all";//默认为全部游戏,最近游玩的参数请改为“recent”
 	$proxy = "";//你的代理IP，非大陆服务器此项及后两项留空，看服务器的比较随缘
 	$proxyport = "";//代理服务器的端口
 	$proxypassword = ":";//http代理认证帐号，username:password的格式
