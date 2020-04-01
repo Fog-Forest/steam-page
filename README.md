@@ -4,11 +4,8 @@
 
 `PS`：如果第一次打开样式有问题就把CSS添加到全局里
 
-### 项目
-[github repo="Fog-Forest/Steam-page"]
-
 ### 样式参考
-[github repo="HCLonely/hexo-steam-games"]
+https://github.com/HCLonely/hexo-steam-games
 
 ### 版本说明
 #### 通用版&API版
