@@ -2,23 +2,24 @@
 
 /**
  Template Name: Steam游戏库代理版
+ Template Author：老蘑菇
  */
 
 get_header(); ?>
 
 <style>
-.steam-game-tabs{margin-bottom:15px;margin-top:15px;}.steam-game-tab{padding:5px;}a.steam-game-tab{text-decoration:none;}.steam-game-active{background:#657b83;color:#fff;}.steam-game-item{padding-bottom:10px;position:relative;clear:both;min-height:100px;padding:10px 0;border-bottom:1px #ddd solid;}@media screen and (max-width:600px){.steam-game-item{width:100%;}}.steam-game-picture{position:absolute;left:0;top:10px;width:184px;padding-top:5px;}.steam-game-info{margin:25px 0;padding-left:194px;}.steam-game-meta{font-size:12px;padding-right:10px;}.steam-game-pagination{margin-top:15px;text-align:center;margin-bottom:10px;}.steam-game-button{padding:5px;text-decoration:none;display:inline-block;}.steam-game-button:hover{background:#657b83;color:#fff;}.steam-game-hide{display:none;}.steam-game-show{display:block;}.steam-game-title{font-size:18px;}.steam-game-title a{line-height:1;color:#99a9bf;}.steam-game-link{min-height:50px;}.steam-game-link a{color:#99a9bf;}@media (max-width:400px){.steam-game-picture{padding-left:5px;}.steam-game-info{margin:10px 0;padding:85px 0 0 5px;}}
+.steam-game-tabs{margin-bottom:15px;margin-top:15px;}.steam-game-tab{padding:5px;}a.steam-game-tab{text-decoration:none;}.steam-game-active{background:#657b83;color:#fff;}.steam-game-item{padding-bottom:10px;position:relative;clear:both;min-height:100px;padding:10px 0;border-bottom:1px #ddd solid;}@media screen and (max-width:600px){.steam-game-item{width:100%;}}.steam-game-picture{position:absolute;left:0;top:10px;width:184px;padding-top:5px;}.steam-game-info{margin:25px 0;padding-left:194px;}.steam-game-meta{font-size:12px;padding-right:10px;}.steam-game-pagination{margin-top:15px;text-align:center;margin-bottom:10px;}.steam-game-button{padding:5px;text-decoration:none;display:inline-block;}.steam-game-button:hover{background:#657b83;color:#fff;}.steam-game-hide{display:none;}.steam-game-show{display:block;}.steam-game-title{font-size:18px;}.steam-game-title a{line-height:1;color:#99a9bf;}.steam-game-link{min-height:50px;}.steam-game-link a{color:#99a9bf;}@media (max-width:400px){.steam-game-picture{padding-left:5px;}.steam-game-info{margin:10px 0;padding:85px 0 0 5px;}}.showall{font-size:20px;color:orange;padding:20px 0 20px 0;}.showall:hover{color:#e67474;}
 </style>
 
 <?php
 	$steamid = "76561198849944519";//你的SteamID，可以在这里获取https://steamsignature.com/
-	$showcount = "all";//你想展示的游戏数量，默认为全部
+	$showtype = "all";//默认为全部游戏,最近游玩过请改为“recent”
 	$proxy = "";//你的代理IP，非大陆服务器此项及后两项留空，看服务器的比较随缘
 	$proxyport = "";//代理服务器的端口
 	$proxypassword = ":";//http代理认证帐号，username:password的格式
 	
 	echo "<a href=\"https://steamcommunity.com/profiles/".$steamid."\" target=\"_blank\"><img src=\"https://steamsignature.com/profile/schinese/".$steamid.".png\"></a>";
-	$url = "https://steamcommunity.com/profiles/$steamid/games/?tab=$showcount";
+	$url = "https://steamcommunity.com/profiles/$steamid/games/?tab=$showtype";
 	$ch = curl_init(); //初始化curl模块
 	curl_setopt($ch, CURLOPT_URL, $url); //登录提交的地址
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);//以文件流的方式返回不直接输出到页面
@@ -53,3 +54,5 @@ get_header(); ?>
 		}
 	}
 ?>
+
+<?php get_footer();
