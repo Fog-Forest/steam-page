@@ -32,18 +32,19 @@ get_header(); ?>
 			}
 			echo "<div class=\"steam-game-item ".$num."\"><div class=\"steam-game-picture\"><img src=\"".$steam->game_logo[$i]."\" referrerpolicy=\"no-referrer\"></div><div class=\"steam-game-info\"><div class=\"steam-game-title\"><a target=\"_blank\" href=\"https://store.steampowered.com/app/".$steam->game_appid[$i]."\">".$steam->game_name[$i]."</a></div><div class=\"steam-game-meta\"><span class=\"steam-game-info-time\">总时数 ".$steam->game_hours[$i]." 小时</span></div></div><div class=\"steam-game-link\"><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/app/".$steam->game_appid[$i]."\">商店页面</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/app/".$steam->game_appid[$i]."/discussions\">论坛</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/search/groups/?text=".$steam->game_name[$i]."\">查找社区组</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/news/?appids=".$steam->game_appid[$i]."\">相关新闻</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamdb.info/app/".$steam->game_appid[$i]."\">SteamDB</a></div></div>";
 		}
-		if ($conut > $page){
-			echo "<center><div class=\"showall\">. Show All .</div></center><br>";
-		}
+	}
+	if($count > $page){
+		echo "<center><div class=\"showall\">. Show All .</div></center><br>";
 	}
 ?>
+
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js"></script>
 <script type="text/javascript">  // 收缩展示
 $(document).ready(function(){
 	$(".more").hide();
 	$(".showall").click(function(){
-		$(".more").show(500);
-		$(".showall").hide();
+		$(".more").fadeIn();
+		$(".showall").text("真的已经到头了哦~");
 	});
 });</script>
 
