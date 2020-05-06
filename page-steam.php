@@ -7,12 +7,129 @@
 
 get_header(); ?>
 
-<style>.steam-game-tabs{margin-bottom:15px;margin-top:15px;}.steam-game-tab{padding:5px;}a.steam-game-tab{text-decoration:none;}.steam-game-active{background:#657b83;color:#fff;}.steam-game-item{padding-bottom:10px;position:relative;clear:both;min-height:100px;border-bottom:1px #ddd solid;}@media screen and (max-width:1920px){.steam-game-item{width:100%;}}.steam-game-picture{position:absolute;left:0;top:10px;width:184px;padding-top:5px;}.steam-game-info{padding-left:194px;position:absolute;}.steam-game-meta{font-size:12px;padding:67px 0px;}.steam-game-pagination{margin-top:15px;text-align:center;margin-bottom:10px;}.steam-game-button{border-radius:300px;background:#ff4460b0;Margin:6px;padding:.35rem;overflow:hidden;z-index:2;transition:all 0.8s;float:right;display:inline-block;}.steam-game-button:hover{background:#657b83;color:#fff;}.steam-game-hide{display:none;}.steam-game-show{display:block;}.steam-game-title{max-width:180px;max-height:65px;overflow:hidden;padding:10px 0;position:absolute;}.steam-game-title a{color:#6daaff;overflow:hidden;font-size:17px;}.steam-game-link{min-height:50px;right:100%;padding:27px 0;}.steam-game-link a{color:#ffffff;}@media screen and (max-width:600px){.steam-game-picture{padding-left:5px;}.steam-game-link{float:right;}.steam-game-title{max-width:0px;max-height:0px;overflow:hidden;}.steam-game-meta{font-size:12px;padding-right:0px;padding-top:71%;}.steam-game-info{margin:10px 0;padding:0px 0px 0px 5px;}.steam-game-button{border-radius:300px;background:#ff4460b0;Margin:2px;padding:0.35rem;overflow:hidden;z-index:2;transition:all 0.8s;float:right;display:inline-block;font-size:13px;}.steam-game-picture{position:absolute;left:26%;top:10px;width:150px;padding-top:35px;}img{height:auto;max-width:100%;}}.showall{font-size:20px;color:orange;padding:20px 0 20px 0;}.showall:hover{color:#e67474;}
+<style>
+	/* 个人资料卡 */
+	.steam-card-img {
+		text-align: center;
+		margin-top: 10px;
+	}
+
+	/* 彩色分割线 */
+	.colorline {
+		width: 100%;
+		height: 5px;
+		margin: 10px auto;
+		background-size: 30px 30px;
+		border: 1px solid #ff9191;
+		background-image: linear-gradient(135deg, #ff9191 0%, #ff9191 25%, white 25%, white 50%, #ff9191 50%, #ff9191 75%, white 75%, white 100%);
+	}
+
+	/* 外层大盒子 */
+	.steam-game-item {
+		position: relative;
+		width: 100%;
+		min-height: 100px;
+		margin: 5px 0;
+		border-style: solid;
+	}
+
+	/* 游戏宣传图 */
+	.steam-game-picture {
+		float: left;
+		margin-top: 10px;
+	}
+
+	/* 游戏信息块 */
+	.steam-game-info {
+		float: left;
+		margin: 10px 0 0 10px;
+		max-width: 130px;
+	}
+
+	/* 游戏标题 */
+	.steam-game-info .steam-game-title a {
+		color: #6daaff;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+
+	/* 游戏时长 */
+	.steam-game-info .steam-game-meta {
+		position: absolute;
+		bottom: 10px;
+		color: #fe9ab0;
+		font-size: 12px;
+	}
+
+	/* 游戏信息按钮块 */
+	.steam-game-link {
+		float: right;
+		margin: 28px 10px 0 0;
+	}
+
+	/* 信息按钮 */
+	.steam-game-link .steam-game-button {
+		display: inline-block;
+		color: #fff;
+		background-color: #fe798d;
+		margin-left: 5px;
+		border-radius: 20px;
+		padding: 5px;
+		transition: all .6s;
+	}
+
+	.steam-game-link .steam-game-button:hover {
+		background: rgba(251, 120, 139, .6);
+	}
+	/* 移动端布局 */
+	@media (max-width:600px) {
+		.steam-game-item * {
+			margin: 0;
+			padding: 0;
+		}
+
+		/* 外层大盒子 */
+		.steam-game-item {
+			float: left;
+			width: 50%;
+			min-height: 150px;
+		}
+
+		/* 游戏宣传图 */
+		.steam-game-picture {
+			clear: left;
+		}
+
+		/* 游戏信息块 */
+		.steam-game-info {
+			clear: left;
+		}
+
+		/* 游戏信息按钮块 */
+		.steam-game-link {
+			display: none;
+		}
+	}
+
+	.showall {
+		color: #ffaa00;
+		font-size: 20px;
+		text-align: center;
+		padding: 20px 0;
+		transition: all .6s;
+	}
+
+	.showall:hover {
+		color: #e67474;
+	}
 </style>
 <?php
 	$id = "76561198849944519";  // 你的SteamID，可以在这里获取https://steamsignature.com/
 	$steamAPI = "https://api.mushroom.ga/SteamAPI.php";  // SteamAPI，我提供了两个API，更推荐你自建。留空走本地（需境外服务器）。
-	$page = 8;  // 首次要展示游戏数目默认为8个
+	$page = 7;  // 首次要展示游戏数目默认为8个
 
 	require_once("json/classSteam.php");
 	$steam = new Steamgame($id, $steamAPI, 3);  // PS: 个人信息图片是实时更新的，有三种样式，默认为Profile，1为"Lite Status"，2为"Card"
@@ -34,7 +151,7 @@ get_header(); ?>
 		}
 	}
 	if($count > $page){
-		echo "<center><div class=\"showall\">. Show All .</div></center><br>";
+		echo "<div class=\"showall\">. Show All .</div>";
 	}
 ?>
 
