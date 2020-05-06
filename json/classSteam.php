@@ -13,16 +13,17 @@ class Steamgame
         // 个人信息卡片
         if($type == 1)
         {
-            echo "<a href=\"https://steamcommunity.com/profiles/".$id."\" target=\"_blank\"><img src=\"https://steamsignature.com/status/schinese/".$id.".png\"></a>";
+            echo "<div class=\"steam-card-img\"><a href=\"https://steamcommunity.com/profiles/".$id."\" target=\"_blank\"><img src=\"https://steamsignature.com/status/schinese/".$id.".png\"></a></div>";
         }
         elseif ($type == 2)
         {
-            echo "<a href=\"https://steamcommunity.com/profiles/".$id."\" target=\"_blank\"><img src=\"https://steamsignature.com/card/0/".$id.".png\"></a>";
+            echo "<div class=\"steam-card-img\"><a href=\"https://steamcommunity.com/profiles/".$id."\" target=\"_blank\"><img src=\"https://steamsignature.com/card/0/".$id.".png\"></a></div>";
         }
         else 
         {
-            echo "<a href=\"https://steamcommunity.com/profiles/".$id."\" target=\"_blank\"><img src=\"https://steamsignature.com/profile/schinese/".$id.".png\"></a>";
+            echo "<div class=\"steam-card-img\"><a href=\"https://steamcommunity.com/profiles/".$id."\" target=\"_blank\"><img src=\"https://steamsignature.com/profile/schinese/".$id.".png\"></a></div>";
         }
+        echo "<div class=\"colorline\"></div>";
 
         // 判断走本地API 或 走外链API
         if($steamAPI){
