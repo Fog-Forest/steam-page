@@ -7,7 +7,180 @@
 
 get_header(); ?>
 
-<style>.steam-game-tabs{margin-bottom:15px;margin-top:15px;}.steam-game-tab{padding:5px;}a.steam-game-tab{text-decoration:none;}.steam-game-active{background:#657b83;color:#fff;}.steam-game-item{padding-bottom:10px;position:relative;clear:both;min-height:100px;border-bottom:1px #ddd solid;}@media screen and (max-width:1920px){.steam-game-item{width:100%;}}.steam-game-picture{position:absolute;left:0;top:10px;width:184px;padding-top:5px;}.steam-game-info{padding-left:194px;position:absolute;}.steam-game-meta{font-size:12px;padding:67px 0px;}.steam-game-pagination{margin-top:15px;text-align:center;margin-bottom:10px;}.steam-game-button{border-radius:300px;background:#ff4460b0;Margin:6px;padding:.35rem;overflow:hidden;z-index:2;transition:all 0.8s;float:right;display:inline-block;}.steam-game-button:hover{background:#657b83;color:#fff;}.steam-game-hide{display:none;}.steam-game-show{display:block;}.steam-game-title{max-width:180px;max-height:65px;overflow:hidden;padding:10px 0;position:absolute;}.steam-game-title a{color:#6daaff;overflow:hidden;font-size:17px;}.steam-game-link{min-height:50px;right:100%;padding:27px 0;}.steam-game-link a{color:#ffffff;}@media screen and (max-width:600px){.steam-game-picture{padding-left:5px;}.steam-game-link{float:right;}.steam-game-title{max-width:0px;max-height:0px;overflow:hidden;}.steam-game-meta{font-size:12px;padding-right:0px;padding-top:71%;}.steam-game-info{margin:10px 0;padding:0px 0px 0px 5px;}.steam-game-button{border-radius:300px;background:#ff4460b0;Margin:2px;padding:0.35rem;overflow:hidden;z-index:2;transition:all 0.8s;float:right;display:inline-block;font-size:13px;}.steam-game-picture{position:absolute;left:26%;top:10px;width:150px;padding-top:35px;}img{height:auto;max-width:100%;}}.showall{font-size:20px;color:orange;padding:20px 0 20px 0;}.showall:hover{color:#e67474;}
+<style>.steam-game-tabs {
+	margin-bottom:15px;
+	margin-top:15px;
+}
+.steam-game-tab {
+	padding:5px;
+}
+a.steam-game-tab {
+	text-decoration:none;
+}
+.steam-game-active {
+	background:#657b83;
+	color:#fff;
+}
+.steam-game-item {
+	padding-bottom:10px;
+	position:relative;
+	clear:both;
+	min-height:100px;
+	border-bottom:1px #ddd solid;
+}
+@media screen and (max-width:1920px) {
+	.steam-game-item {
+	width:100%;
+}
+}.steam-game-picture {
+	position:absolute;
+	left:0;
+	top:10px;
+	width:184px;
+	padding-top:5px;
+}
+.steam-game-info {
+	padding-left:194px;
+	position:absolute;
+}
+.steam-game-meta {
+	font-size:12px;
+	padding:67px 0px;
+}
+
+.steam-game-pagination {
+	margin-top:15px;
+	text-align:center;
+	margin-bottom:10px;
+}
+.steam-game-button {
+	border-radius:300px;
+	background:#ff4460b0;
+	Margin:6px;
+	padding:.35rem;
+	overflow:hidden;
+	z-index:2;
+	transition:all 0.8s;
+	float:right;
+	display:inline-block;
+}
+.steam-game-button1 {
+	border-radius:300px;
+	background:#ff4460b0;
+	Margin:6px;
+	padding:.35rem;
+	overflow:hidden;
+	z-index:99999;
+	transition:all 0.8s;
+	float:right;
+	display:inline-block;
+}
+.steam-game-button1:hover {
+	background:#c38891;
+	color:#fff;
+}
+.steam-game-button:hover {
+	background:#c38891;
+	color:#fff;
+}
+.steam-game-hide {
+	display:none;
+}
+.steam-game-show {
+	display:block;
+}
+.steam-game-title {
+	max-width:180px;
+	max-height:65px;
+	overflow:hidden;
+	padding:10px 0;
+	position:absolute;
+}
+.steam-game-title a {
+	color:#6daaff;
+	overflow:hidden;
+	font-size:17px;
+}
+.steam-game-link {
+	min-height:50px;
+	right:100%;
+	padding:27px 0;
+}
+.steam-game-link a {
+	color:#ffffff;
+}
+@media screen and (max-width:600px) {
+	.steam-game-picture {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.steam-game-link {
+    min-height: 25px;
+    right: 100%;
+    padding: 5px 0;
+}
+.steam-game-title {
+	max-width:0px;
+	max-height:0px;
+	overflow:hidden;
+}
+.steam-game-meta {
+    font-size: 13px;
+    position: fixed;
+    left: 45px;
+}
+.steam-game-item {
+    width: 59%;
+    left: 44%;
+}
+.steam-game-info {
+	display:none;
+}
+.steam-game-button {
+    display:none;
+}
+.steam-game-picture {
+	position:absolute;
+	left:26%;
+	top:10px;
+	width:150px;
+	padding-top:35px;
+}
+.steam-game-picture {
+    position: absolute;
+    left: -78%;
+    top: 11px;
+    width: 180px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    padding-top: 5px;
+    padding-bottom: 0px;
+    text-align: center;
+}
+.steam-game-button {
+    border-radius: 300px;
+    background: #ff4460b0;
+    Margin: 6px;
+    padding: .35rem;
+    overflow: hidden;
+    z-index: 2;
+    transition: all 0.8s;
+    display: inline-block;
+}
+.steam-game-button1 {
+    display:none;
+}
+img {
+	height:auto;
+	max-width:100%;
+}
+}.showall {
+	font-size:20px;
+	color:orange;
+	padding:20px 0 20px 0;
+}
+.showall:hover {
+	color:#e67474;
+}
 </style>
 <?php
 	$id = "76561198849944519";  // 你的SteamID，可以在这里获取https://steamsignature.com/
@@ -30,7 +203,7 @@ get_header(); ?>
 			if($steam->game_appid[$i] == 205790){
 				continue;  // Dota2 Test图片有问题，跳过该游戏
 			}
-			echo "<div class=\"steam-game-item ".$num."\"><div class=\"steam-game-picture\"><img src=\"".$steam->game_logo[$i]."\" referrerpolicy=\"no-referrer\"></div><div class=\"steam-game-info\"><div class=\"steam-game-title\"><a target=\"_blank\" href=\"https://store.steampowered.com/app/".$steam->game_appid[$i]."\">".$steam->game_name[$i]."</a></div><div class=\"steam-game-meta\"><span class=\"steam-game-info-time\">总时数 ".$steam->game_hours[$i]." 小时</span></div></div><div class=\"steam-game-link\"><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/app/".$steam->game_appid[$i]."\">商店页面</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/app/".$steam->game_appid[$i]."/discussions\">论坛</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/search/groups/?text=".$steam->game_name[$i]."\">查找社区组</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/news/?appids=".$steam->game_appid[$i]."\">相关新闻</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamdb.info/app/".$steam->game_appid[$i]."\">SteamDB</a></div></div>";
+			echo "<div class=\"steam-game-item ".$num."\"><div class=\"steam-game-picture\"><img src=\"".$steam->game_logo[$i]."\" referrerpolicy=\"no-referrer\"></div><div class=\"steam-game-info\"><div class=\"steam-game-title\"><a target=\"_blank\" href=\"https://store.steampowered.com/app/".$steam->game_appid[$i]."\">".$steam->game_name[$i]."</a></div><div class=\"steam-game-meta\"><span class=\"steam-game-info-time\">总时数 ".$steam->game_hours[$i]." 小时</span></div></div><div class=\"steam-game-link\"><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/app/".$steam->game_appid[$i]."\">商店页面</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/app/".$steam->game_appid[$i]."/discussions\">论坛</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/search/groups/?text=".$steam->game_name[$i]."\">查找社区组</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/news/?appids=".$steam->game_appid[$i]."\">相关新闻</a><a class=\"steam-game-button1\" target=\"_blank\" href=\"https://steamdb.info/app/".$steam->game_appid[$i]."\">SteamDB</a></div></div>";
 		}
 	}
 	if($count > $page){
