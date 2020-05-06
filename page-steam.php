@@ -87,25 +87,34 @@ get_header(); ?>
 	/* 移动端布局 */
 	@media (max-width:600px) {
 		.steam-game-item * {
-			margin: 0;
 			padding: 0;
+			margin: 0;
 		}
-
 		/* 外层大盒子 */
 		.steam-game-item {
+			position: static;
 			float: left;
-			width: 50%;
+			width: 48%;
 			min-height: 150px;
+			margin: 0 1% 1% 1%;
 		}
 
 		/* 游戏宣传图 */
 		.steam-game-picture {
-			clear: left;
+			clear: both;
 		}
 
 		/* 游戏信息块 */
 		.steam-game-info {
-			clear: left;
+			width: 100%;
+			clear: both;
+			text-align: center;
+			padding-left: 16%;
+		}
+		
+		/* 游戏时长 */
+		.steam-game-info .steam-game-meta {
+			position: static;
 		}
 
 		/* 游戏信息按钮块 */
@@ -118,7 +127,7 @@ get_header(); ?>
 		color: #ffaa00;
 		font-size: 20px;
 		text-align: center;
-		padding: 20px 0;
+		padding: 20px 10px;
 		transition: all .6s;
 	}
 
@@ -128,7 +137,7 @@ get_header(); ?>
 </style>
 <?php
 	$id = "76561198849944519";  // 你的SteamID，可以在这里获取https://steamsignature.com/
-	$steamAPI = "https://api.mushroom.ga/SteamAPI.php";  // SteamAPI，我提供了两个API，更推荐你自建。留空走本地（需境外服务器）。
+	$steamAPI = "https://api.miao33.top/SteamAPI.php";  // SteamAPI，我提供了两个API，更推荐你自建。留空走本地（需境外服务器）。
 	$page = 7;  // 首次要展示游戏数目默认为8个
 
 	require_once("json/classSteam.php");
