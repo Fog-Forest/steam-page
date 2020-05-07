@@ -137,7 +137,7 @@ get_header(); ?>
 </style>
 <?php
 	$id = "76561198849944519";  // 你的SteamID，可以在这里获取https://steamsignature.com/
-	$steamAPI = "https://api.miao33.top/SteamAPI.php";  // SteamAPI，我提供了两个API，更推荐你自建。留空走本地（需境外服务器）。
+	$steamAPI = "https://api.miao33.top/SteamAPI.php";  // SteamAPI，我提供了两个API，更推荐你自建。境外服务器可以走本地，$steamAPI = "http://你的网址/json/SteamAPI.php"。
 	$page = 7;  // 首次要展示游戏数目默认为8个
 
 	require_once("json/classSteam.php");

@@ -25,27 +25,14 @@ class Steamgame
         }
         echo "<div class=\"colorline\"></div>";
 
-        // 判断走本地API 或 走外链API
-        if($steamAPI){
-	        $api_url = $steamAPI."?id=".$id."&type=all";  // 拼合外链api_url
-            if((time() - filemtime("json/steam.json")) > 86400)  // 缓存Steam API数据24小时，使用我的API请不要改为0
-            {
-                file_put_contents("json/steam.json", file_get_contents($api_url));
-                $game_info = file_get_contents("json/steam.json");
-            } else {
-                $game_info = file_get_contents("json/steam.json");
-            }
-        }
-        else
+        // 缓存Steam游戏库数据
+	    $api_url = $steamAPI."?id=".$id."&type=all";  // 拼合Steam api_url
+        if((time() - filemtime("json/steam.json")) > 86400)  // 缓存Steam API数据24小时，使用我的API请不要改为0
         {
-            $api_url = "json/SteamAPI.php?id=".$id."&type=all";  // 拼合本地api_url
-            if((time() - filemtime("json/steam.json")) > 86400)  // 缓存Steam API数据24小时
-            {
-                file_put_contents("json/steam.json", file_get_contents($api_url));
-                $game_info = file_get_contents("json/steam.json");
-            } else {
-                $game_info = file_get_contents("json/steam.json");
-            }
+        file_put_contents("json/steam.json", file_get_contents($api_url));
+            $game_info = file_get_contents("json/steam.json");
+        } else {
+            $game_info = file_get_contents("json/steam.json");
         }
         
         $this->game_data = json_decode($game_info, true);
