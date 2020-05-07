@@ -30,7 +30,7 @@ get_header(); ?>
 		width: 100%;
 		min-height: 100px;
 		margin: 5px 0;
-		border-style: solid;
+		border-bottom: 1px solid #D3D3D3;
 	}
 
 	/* 游戏宣传图 */
@@ -95,8 +95,10 @@ get_header(); ?>
 			position: static;
 			float: left;
 			width: 48%;
-			min-height: 150px;
-			margin: 0 1% 1% 1%;
+			height: 120px;
+			background-color: #fff;
+			margin: 0 1% 20px 1%;
+			box-shadow: 3px 3px 2px rgba(0, 0, 0, .3);
 		}
 
 		/* 游戏宣传图 */
@@ -106,15 +108,24 @@ get_header(); ?>
 
 		/* 游戏信息块 */
 		.steam-game-info {
-			width: 100%;
+			position: relative;
 			clear: both;
+			width: 100%;
+			left: 10%;
 			text-align: center;
-			padding-left: 16%;
 		}
 		
 		/* 游戏时长 */
 		.steam-game-info .steam-game-meta {
 			position: static;
+		}
+		
+		/* 游戏标题 */
+		.steam-game-info .steam-game-title {
+			font-size: 12px;
+			height: 16px;
+			overflow: hidden;
+			margin-bottom: 10px;
 		}
 
 		/* 游戏信息按钮块 */
@@ -127,7 +138,7 @@ get_header(); ?>
 		color: #ffaa00;
 		font-size: 20px;
 		text-align: center;
-		padding: 20px 10px;
+		padding: 20px 0;
 		transition: all .6s;
 	}
 
@@ -137,7 +148,7 @@ get_header(); ?>
 </style>
 <?php
 	$id = "76561198849944519";  // 你的SteamID，可以在这里获取https://steamsignature.com/
-	$steamAPI = "https://api.miao33.top/SteamAPI.php";  // SteamAPI，我提供了两个API，更推荐你自建。境外服务器可以走本地，$steamAPI = "http://你的网址/json/SteamAPI.php"。
+	$steamAPI = "https://api.miao33.top/SteamAPI.php";  // SteamAPI，我提供了两个API（在我博客获取），更推荐你自建。境外服务器推荐走本地，$steamAPI = "http://你的网址/json/SteamAPI.php"
 	$page = 7;  // 首次要展示游戏数目默认为8个
 
 	require_once("json/classSteam.php");
@@ -160,7 +171,7 @@ get_header(); ?>
 		}
 	}
 	if($count > $page){
-		echo "<div class=\"showall\">. Show All .</div>";
+		echo "<div style=\"clear:both\"></div><div class=\"showall\">. Show All .</div>";
 	}
 ?>
 
