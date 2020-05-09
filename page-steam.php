@@ -92,8 +92,12 @@ get_header(); ?>
 		}
 		/* 外层大盒子 */
 		.steam-game-item {
-			position: static;
+			position: relative;
+			display: inline-grid;
+			justify-content: center;
+			align-items: center;
 			float: left;
+			margin: 3px;
 			width: 48%;
 			height: 120px;
 			background-color: #fff;
@@ -104,15 +108,15 @@ get_header(); ?>
 		/* 游戏宣传图 */
 		.steam-game-picture {
 			clear: both;
+			overflow: hidden;
 		}
 
 		/* 游戏信息块 */
 		.steam-game-info {
-			position: relative;
 			clear: both;
-			width: 100%;
-			left: 10%;
 			text-align: center;
+            margin: auto;
+            left: 50%;
 		}
 		
 		/* 游戏时长 */
