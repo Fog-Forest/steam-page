@@ -5,14 +5,14 @@
 	if($steamid == null){
 		echo "Error!";
 	} else{
-		preg_match("#var\srgGames\s=\s(.*?);#",steaminfo($steamid,$showtype) , $list);//正则取Steam游戏库JSON
-		echo $list[1];	
+		preg_match("#(?<=var\srgGames\s=\s).*?(false}}];)#",steaminfo($steamid,$showtype) , $list);  // 正则取Steam游戏库JSON
+		echo $list[0];	
 	}
 	
 	// 获取Steam信息函数
 	function steaminfo($steamid,$showtype){
 		$url = "https://steamcommunity.com/profiles/$steamid/games/?tab=$showtype";
-		$ch = curl_init(); //初始化curl模块
+		$ch = curl_init(); // 初始化curl模块
 		curl_setopt($ch, CURLOPT_URL, $url);  // 登录提交的地址
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // 以文件流的方式返回不直接输出到页面
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);  // 自动获取新url内容：302跳转
@@ -24,5 +24,5 @@
 		$gameinfo = curl_exec($ch);
 		curl_close($ch);
 		return $gameinfo;
-	}	
+	}
 ?>
