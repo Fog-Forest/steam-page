@@ -5,7 +5,7 @@
 	if($steamid == null){
 		echo "Error!";
 	} else{
-		preg_match("#(?<=var\srgGames\s=\s).*?(false}}];)#",steaminfo($steamid,$showtype) , $list);  // 正则取Steam游戏库JSON
+		preg_match("#(?<=var\srgGames\s=\s).*?false}}](?=;)#",steaminfo($steamid,$showtype) , $list);  // 正则取Steam游戏库JSON
 		echo $list[0];	
 	}
 	
