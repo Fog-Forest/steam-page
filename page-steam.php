@@ -180,7 +180,9 @@ if ($count > $page) {
 }
 ?>
 
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js"></script>
+<script type="text/javascript">
+	window.jQuery || document.write('<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js"><\/script>')
+</script>
 <script type="text/javascript">
 	// 收缩展示
 	$(document).ready(function() {
