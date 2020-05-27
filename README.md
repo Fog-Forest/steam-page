@@ -10,9 +10,9 @@
 ### 使用说明
 1. 下载项目中的文件，将 `page-steam.php` 扔到你的主题根目录，将 `json` 目录扔到你的站点根目录；
 
-2. 修改 `page-steam.php` 文件中的第14行为你的 SteamID，第15行为 SteamAPI ，其他请看注释修改；
+2. 修改 `page-steam.php` 文件中的第 184 行为你的 SteamID，第185行为 SteamAPI ，其他请看注释修改；
 
-3. 如果你是境内机器请使用 API（我提供了两个，去我的博客获取，不保证稳定性），或者可以自建 API （将 `json` 目录中的 `SteamAPI.php` ，放到任意一台PHP环境的境外虚拟主机或者服务器上 ）。如果你是境外服务器可以走本地，改为 `$steamAPI = "http://你的网址/json/SteamAPI.php"` 即可；
+3. 如果你是境内机器请使用 API（我提供了两个，去我的博客获取，不保证稳定性），或者可以自建 API （将 `json` 目录中的 `SteamAPI.php` ，放到任意一台PHP环境的境外虚拟主机或者服务器上 ）。如果你是境外服务器可以走本地，改为 `$steamAPI = "http://你的域名/json/SteamAPI.php"` 即可；
 
 4. 信息填好后，在 `WP后台 - 新建页面` 选择 `Steam游戏库` 这个模版即可。
 
