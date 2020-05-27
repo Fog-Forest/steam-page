@@ -19,7 +19,8 @@ get_header(); ?>
 		text-align: center;
 		margin-top: 10px;
 	}
-	.steam-card-img a{
+
+	.steam-card-img a {
 		display: inline-block;
 	}
 
@@ -197,9 +198,7 @@ $steam = new SteamCard($id, $steamAPI, 3);  // PS: 个人信息图片是实时�
 	</ul>
 </div>
 
-<script type="text/javascript">
-	window.jQuery || document.write('<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js"><\/script>')
-</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
