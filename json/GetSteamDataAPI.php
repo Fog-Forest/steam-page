@@ -52,6 +52,7 @@ function GetSteamLibraryData(){
 
 function CheckUpdate()
 {
+    $file_path = SG4WP_PLUGIN_DIR . "API/json/steam.json";
     //TODO: 修改
     $steamAPI = "https://api.miao33.top/SteamAPI.php";
     $api_url = $steamAPI . "?id=" . esc_attr(get_option('zm_sg4wp_id')) . "&type=all";  // 拼合Steam api_url
