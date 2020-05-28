@@ -8,10 +8,14 @@
 get_header(); ?>
 
 <style>
-	.page-list ul,
 	#steam-game-div {
-		margin: 0;
+		margin: 0 5px;
 		padding: 0;
+	}
+
+	.steam-game-item * {
+		padding: 0;
+		margin: 0;
 	}
 
 	/* 个人资料卡 */
@@ -24,9 +28,13 @@ get_header(); ?>
 		display: inline-block;
 	}
 
+	.steam-card-img a img {
+		width: 100%;
+	}
+
 	/* 彩色分割线 */
 	.colorline {
-		width: 100%;
+		width: inherit;
 		height: 5px;
 		margin: 10px auto;
 		background-size: 30px 30px;
@@ -47,6 +55,10 @@ get_header(); ?>
 	.steam-game-picture {
 		float: left;
 		margin-top: 10px;
+	}
+
+	.steam-game-picture img {
+		width: 100%;
 	}
 
 	/* 游戏信息块 */
@@ -97,10 +109,6 @@ get_header(); ?>
 
 	/* 移动端布局 */
 	@media (max-width:600px) {
-		.steam-game-item * {
-			padding: 0;
-			margin: 0;
-		}
 
 		/* 外层大盒子 */
 		.steam-game-item {
@@ -119,7 +127,6 @@ get_header(); ?>
 		/* 游戏宣传图 */
 		.steam-game-picture {
 			clear: both;
-			overflow: hidden;
 		}
 
 		/* 游戏信息块 */
