@@ -6,7 +6,7 @@
  */
 
 get_header(); ?>
-
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <style>
 	#steam-game-div {
 		margin: 0 5px;
@@ -191,6 +191,7 @@ get_header(); ?>
 		transform: scale(1.1);
 	}
 </style>
+<?php the_content(); ?>
 <?php
 $id = "76561198849944519";  // 你的SteamID，可以在这里获取 https://steamsignature.com/
 $steamAPI = "https://api.miao33.top/SteamAPI.php";  // SteamAPI，我提供了两个API（在我博客获取），更推荐你自建。境外服务器推荐走本地，$steamAPI = "https://你的域名/json/SteamAPI.php"
@@ -258,5 +259,5 @@ $steam = new SteamCard($id, $steamAPI, 3);  // PS: 个人信息图片是实时�
 		});
 	}
 </script>
-
+<?php endwhile; else: endif;?>
 <?php get_footer();
