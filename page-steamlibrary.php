@@ -10,15 +10,14 @@ get_header();
 require_once("json/classSteamCard.php");
 
 ?>
-
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <link rel="stylesheet" href="<?php echo SG4WP_PLUGIN_URL . "/API/assets/css/steamlibrary.css" ?>">
 <script src="<?php echo SG4WP_PLUGIN_URL . "/API/assets/js/steamlibrary.js" ?>"></script>
-
+<?php the_content(); ?>
 <?php
 	$id = esc_attr(get_option('zm_sg4wp_id'));  
 	$steam = new SteamCard($id,intval(esc_attr(get_option('zm_sg4wp_cardtype'))));
 ?>
-
 <div id="steam-game-div"></div>
 <div class="page-list">
 	<ul>
@@ -90,5 +89,5 @@ window.addEventListener("load",function() {
 		})
 	}
 </script>
-
+<?php endwhile; else: endif;?>
 <?php get_footer();
