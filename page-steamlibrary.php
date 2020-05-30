@@ -16,8 +16,7 @@ require_once("json/classSteamCard.php");
 
 <?php
 	$id = esc_attr(get_option('zm_sg4wp_id'));  
-	$steamAPI = "https://api.miao33.top/SteamAPI.php"; 
-	$steam = new SteamCard($id, $steamAPI,intval(esc_attr(get_option('zm_sg4wp_cardtype'))));
+	$steam = new SteamCard($id,intval(esc_attr(get_option('zm_sg4wp_cardtype'))));
 ?>
 
 <div id="steam-game-div"></div>
@@ -50,6 +49,11 @@ window.addEventListener("load",function() {
 	});
 
 	function GetSteamData(limit, page) {
+		let gameDiv = document.getElementById("steam-game-div");
+		let nextBtn = document.getElementById("next");
+		let prevBtn = document.getElementById("last");
+
+		gameDiv.innerHTML = "<img class=\"lazy\" src=\"https://cdn.jsdelivr.net/gh/Fog-Forest/Steam-page@1.2/json/loading.svg\"/>";
 		fetch( "<?php   echo (admin_url('admin-ajax.php') .'?action=GetSteamLibraryData')  ?>" + "&limit="+ limit + "&page="+page,{
 			method:"GET"
 		}).then(async response=>{
@@ -58,10 +62,7 @@ window.addEventListener("load",function() {
 
 					let i;
 
-					let gameDiv = document.getElementById("steam-game-div");
-					let nextBtn = document.getElementById("next");
-					let prevBtn = document.getElementById("last");
-
+					
 					gameDiv.innerHTML = "";
 					if (data.total_page == page && page == 0) { // 判断是否家境贫寒
 						fadeOut(nextBtn,0.3);

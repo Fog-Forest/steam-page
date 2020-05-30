@@ -6,7 +6,11 @@ if (empty($steamid)) {
 	die("Steam id 为必须参数！");
 } else {
 	preg_match("#(?<=var\srgGames\s=\s).*?false}}](?=;)#", steaminfo($steamid, $showtype), $json);  // 正则取Steam游戏库JSON
+	if(is_array($json) && count($json) > 0){
 	echo $json[0];
+	}else{
+		echo "";
+	}
 }
 
 // 获取Steam信息函数

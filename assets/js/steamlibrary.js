@@ -46,7 +46,6 @@ function fadeOut(elem, speed) {
     tempOpacity -= 0.05;
     if (tempOpacity > 0) {
       setTimeout(arguments.callee, speed);
-      console.log("why");
     } else {
       elem.style.display = "none";
     }

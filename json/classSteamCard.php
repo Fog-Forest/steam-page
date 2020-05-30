@@ -2,7 +2,7 @@
 class SteamCard
 {
     // 主函数
-    public function __construct($id, $steamAPI, $type)
+    public function __construct($id, $type)
     {
         // 个人信息卡片
         if ($type == 1) {
