@@ -2,10 +2,11 @@
 
 /**
  Template Name: Steam游戏库
- Template Author：老蘑菇&梨花镇的阿肾
+ Template Author：蘑菇君&阿肾
  */
 
 get_header(); ?>
+
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <style>
 	#steam-game-div {
@@ -206,7 +207,9 @@ $steam = new SteamCard($id, $steamAPI, 3);  // PS: 个人信息图片是实时�
 	</ul>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.0/dist/jquery.min.js"></script>
+<script type="text/javascript">
+	window.jQuery || document.write('<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"><\/script>')
+</script>
 <script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -259,5 +262,6 @@ $steam = new SteamCard($id, $steamAPI, 3);  // PS: 个人信息图片是实时�
 		});
 	}
 </script>
+
 <?php endwhile; else: endif;?>
 <?php get_footer();
