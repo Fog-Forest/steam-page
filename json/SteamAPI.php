@@ -12,7 +12,13 @@ if (empty($steamid)) {
 // 获取Steam信息函数
 function steaminfo($steamid, $showtype)
 {
-	$url = "https://steamcommunity.com/profiles/$steamid/games/?tab=$showtype";
+	if (empty($showtype)) {
+		$url = "https://steamcommunity.com/profiles/$steamid/games/?tab=all";
+	} elseif ($showtype == "all" || $showtype == "recent") {
+		$url = "https://steamcommunity.com/profiles/$steamid/games/?tab=$showtype";
+	} else {
+		$url = "https://steamcommunity.com/profiles/$steamid/games/?tab=all";
+	}
 	$ch = curl_init(); // 初始化curl模块
 	curl_setopt($ch, CURLOPT_URL, $url);  // 登录提交的地址
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);  // 以文件流的方式返回不直接输出到页面
