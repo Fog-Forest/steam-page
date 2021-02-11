@@ -157,7 +157,6 @@ get_header(); ?>
 		}
 	}
 
-	/* 清除浮动 */
 	#steam-game-div::after {
 		content: "";
 		display: block;
@@ -195,7 +194,7 @@ get_header(); ?>
 <?php the_content(); ?>
 <?php
 $id = "76561198849944519";  // 你的SteamID，可以在这里获取 https://steamsignature.com/
-$steamAPI = "https://api.miao33.top/SteamAPI.php";  // SteamAPI，我提供了两个API（在我博客获取），更推荐你自建。境外服务器推荐走本地，$steamAPI = "https://你的域名/json/SteamAPI.php"
+$steamAPI = "https://api.fogmoe.com/SteamAPI.php";  // SteamAPI，我提供了两个API（在我博客获取），更推荐你自建。境外服务器推荐走本地，$steamAPI = "https://你的域名/json/SteamAPI.php"
 require_once("json/classSteamCard.php");
 $steam = new SteamCard($id, $steamAPI, 3);  // PS: 个人信息图片是实时更新的，有三种样式，默认为Profile，1为"Lite Status"，2为"Card"
 ?>
