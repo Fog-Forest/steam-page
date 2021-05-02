@@ -53,7 +53,7 @@ function GetSteamLibraryData(){
 function CheckUpdate()
 {
     $file_path = SG4WP_PLUGIN_DIR . "API/json/steam.json";
-    $steamAPI = esc_attr(get_option('zm_sg4wp_apitype')) == "1" ? SG4WP_PLUGIN_URL . "/API/json/SteamAPI.php" : "https://api.miao33.top/SteamAPI.php";
+    $steamAPI = esc_attr(get_option('zm_sg4wp_apitype')) == "1" ? SG4WP_PLUGIN_URL . "/API/json/SteamAPI.php" : "https://api.fogmoe.com/SteamAPI.php";
     $api_url = $steamAPI . "?id=" . esc_attr(get_option('zm_sg4wp_id')) . "&type=all";  // 拼合Steam api_url
     if (!file_exists($file_path) || (time() - filemtime($file_path)) > intval(esc_attr(get_option('zm_sg4wp_cachetime')))){  // 缓存Steam API数据24小时，使用我的API请不要改为0
         file_put_contents($file_path, file_get_contents($api_url, false, stream_context_create(
