@@ -28,7 +28,7 @@ function steaminfo($steamid, $showtype)
 	));
 	$gameinfo = curl_exec($ch);
 	curl_close($ch);
-	$temp = str_replace("steamcdn-a.akamaihd.net", "media.st.dl.pinyuncloud.com", $gameinfo);  // 替换为Stean 国内CDN节点
+	$temp = str_replace("cdn.cloudflare.steamstatic.com", "media.st.dl.pinyuncloud.com", $gameinfo);  // 替换为Stean 国内CDN节点
 	$gameimg = ["https:\/\/media.st.dl.pinyuncloud.com\/steam\/apps\/205790\/capsule_184x69.jpg"];  // 404的图片，例如 Dota2 Test，如果还有自行往里加
 	return str_replace($gameimg, "https://cdn.jsdelivr.net/gh/IMGRU/IMG/2020/05/28/5ece9990c9be7.jpg", $temp);
 }
