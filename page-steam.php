@@ -2,7 +2,7 @@
 
 /**
  Template Name: Steam游戏库
- Template Author：蘑菇君&阿肾
+ Template Author：蘑菇君&阿肾&格雷z洋洋
  */
 
 get_header(); ?>
@@ -193,10 +193,16 @@ get_header(); ?>
 		</style>
 		<?php the_content(); ?>
 		<?php
-		$id = "76561198849944519";  // 你的SteamID，可以在这里获取:https://steamsignature.com/
-		$steamAPI = "https://api.fogmoe.com/SteamAPI.php";  // SteamAPI 接口地址，更推荐你自建。境外服务器直接走本地，$steamAPI = "https://你的域名/json/SteamAPI.php"
+		$id = "";  // 你的SteamID，可以在这里获取：https://www.steamidfinder.com/
+		$key = "";  // 您的 Steam Web API 密钥，可以在这里获取：https://steamcommunity.com/dev/registerkey
+		$card = ""; // 你在 exophase 网站上通过 SteamID 生成的卡片，获取链接：https://gamercards.exophase.com/
+
+		// SteamAPI 接口地址，$steamAPI = "https://你的域名/json/SteamAPI.php"
+		// 大陆自建理论上API地址未被屏蔽，若不幸被屏蔽可修改 SteamAPI.php 文件第 25、26 行，自行添加代理
+		// 境外服务器直接走本地
+		$steamAPI = "/json/SteamAPI.php";
 		require_once("json/classSteamCard.php");
-		$steam = new SteamCard($id, $steamAPI, 3);  // PS: 个人信息图片是实时更新的，有三种样式，默认为Profile，1为"Lite Status"，2为"Card"
+		$steam = new SteamCard($id, $key, $steamAPI, $card);  // PS: 个人信息图片是实时更新的
 		?>
 
 		<div id="steam-game-div"></div>
@@ -212,55 +218,56 @@ get_header(); ?>
 		</script>
 		<script src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-rc.2/lazyload.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function() {
-				var pagenum = 0;
-				var limit = 8; //单页展示数
-				GetSteamData(limit, 0);
-				$("li#last").click(function() {
-					GetSteamData(limit, --pagenum);
-					console.log("第 " + pagenum + " 页");
-				});
-				$("li#next").click(function() {
-					GetSteamData(limit, ++pagenum);
-					console.log("第 " + pagenum + " 页");
-				});
-			});
-
-			function GetSteamData(limit, page) {
-				$.ajax({
-					type: "get",
-					url: "/json/GetSteamData.php",
-					data: {
-						"limit": limit, // 每页个数
-						"page": page // 页号,第一页 page = 0
-					},
-					dataType: "json",
-					// 分页数据处理
-					success: function(data) {
-						var i;
-						$("#steam-game-div").empty(); // 删除被选元素及其子元素
-						if (data.total_page == page && page == 0) { // 判断是否家境贫寒
-							$("li#last").hide();
-							$("li#next").hide();
-						} else if (data.total_page == page) { // 判断是否最后一页
-							$("li#next").hide();
-						} else if (page == 0) { // 判断是否为第一页
-							$("li#last").hide();
-						} else {
-							$("li#next").fadeIn();
-							$("li#last").fadeIn();
-						}
-						for (i = 0; i < data.data.length; i++) {
-							$("#steam-game-div").append("<div class=\"steam-game-item\"><div class=\"steam-game-picture\"><img class=\"lazy\" src=\"/json/images/loading.svg\" data-src=\"" + data.data[i].logo + "\" referrer=\"no-referrer\"></div><div class=\"steam-game-info\"><div class=\"steam-game-title\"><a target=\"_blank\" href=\"https://store.steampowered.com/app/" + data.data[i].appid + "\">" + data.data[i].name + "</a></div><div class=\"steam-game-meta\"><span class=\"steam-game-info-time\">总时数 " + data.data[i].hours_forever + " 小时</span></div></div><div class=\"steam-game-link\"><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/app/" + data.data[i].appid + "\">商店页面</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/app/" + data.data[i].appid + "/discussions\">论坛</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/search/groups/?text=" + data.data[i].name + "\">查找社区组</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/news/?appids=" + data.data[i].appid + "\">相关新闻</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamdb.info/app/" + data.data[i].appid + "\">SteamDB</a></div></div>");
-							// console.log(data); // 查看AJAX获取的数据
-						}
-						$("img.lazy").lazyload(); // 图片懒加载
-					},
-					error: function(data) {
-						alert(data.result);
-					}
-				});
-			}
+            jQuery(document).ready(function($) {
+                function GetSteamData(limit, page) {
+                    $.ajax({
+                        type: "get",
+                        url: "/json/GetSteamData.php",
+                        data: {
+                            "limit": limit,
+                            // 每页个数
+                            "page": page // 页号,第一页 page = 0
+                        },
+                        dataType: "json",
+                        // 分页数据处理
+                        success: function(data) {
+                            var i;
+                            $("#steam-game-div").empty(); // 删除被选元素及其子元素
+                            if (data.total_page == page && page == 0) { // 判断是否家境贫寒
+                                $("li#last").hide();
+                                $("li#next").hide();
+                            } else if (data.total_page == page) { // 判断是否最后一页
+                                $("li#next").hide();
+                            } else if (page == 0) { // 判断是否为第一页
+                                $("li#last").hide();
+                            } else {
+                                $("li#next").fadeIn();
+                                $("li#last").fadeIn();
+                            }
+                            for (i = 0; i < data.data.length; i++) {
+                                $("#steam-game-div").append("<div class=\"steam-game-item\"><div class=\"steam-game-picture\"><img class=\"lazy\" src=\"https://cdn.jsdelivr.net/gh/Fog-Forest/Steam-page@1.2/json/loading.svg\" data-src=\"" + data.data[i].logo + "\" referrer=\"no-referrer\"></div><div class=\"steam-game-info\"><div class=\"steam-game-title\"><a target=\"_blank\" href=\"https://store.steampowered.com/app/" + data.data[i].appid + "\">" + data.data[i].name + "</a></div><div class=\"steam-game-meta\"><span class=\"steam-game-info-time\">总时数 " + data.data[i].hours_forever + " 小时</span></div></div><div class=\"steam-game-link\"><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/app/" + data.data[i].appid + "\">商店页面</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/app/" + data.data[i].appid + "/discussions\">论坛</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamcommunity.com/search/groups/?text=" + data.data[i].name + "\">查找社区组</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://store.steampowered.com/news/?appids=" + data.data[i].appid + "\">相关新闻</a><a class=\"steam-game-button\" target=\"_blank\" href=\"https://steamdb.info/app/" + data.data[i].appid + "\">SteamDB</a></div></div>");
+                                // console.log(data); // 查看AJAX获取的数据
+                            }
+                            $("img.lazy").lazyload(); // 图片懒加载
+                        },
+                        error: function(data) {
+                            alert(data.result);
+                        }
+                    });
+                }
+            
+                var pagenum = 0;
+                var limit = 8; //单页展示数
+                GetSteamData(limit, 0);
+                $("li#last").click(function() {
+                    GetSteamData(limit, --pagenum);
+                    console.log("第 " + pagenum + " 页");
+                });
+                $("li#next").click(function() {
+                    GetSteamData(limit, ++pagenum);
+                    console.log("第 " + pagenum + " 页");
+                });
+            });
 		</script>
 
 <?php endwhile;
